@@ -1,6 +1,6 @@
 # Bazuro
 
-TODO: Write a gem description
+Bazuro-PDF2DOCX allows convert from PDF to DOCX, through MS-WORD 2013 or later, using a macro
 
 ## Installation
 

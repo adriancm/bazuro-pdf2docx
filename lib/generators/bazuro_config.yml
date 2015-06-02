@@ -1,0 +1,9 @@
+remote:
+  url: 'ip or domain'
+  username: 'your username'
+  password: 'your password'
+  filename: 'output filename'
+local:
+  winword_path: 'C:\Program Files\Microsoft Office\Office15\WINWORD.exe'
+
+

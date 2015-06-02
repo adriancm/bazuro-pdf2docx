@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Bazuro::VERSION
   spec.authors       = ["Adrian Cepillo"]
   spec.email         = ["adrian.cepillo@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{Bazuro-PDF2DOCX allows convert from PDF to DOCX, through MS-WORD 2013 or later, using a macro}
+  spec.description   = %q{Bazuro-PDF2DOCX allows convert from PDF to DOCX, through MS-WORD 2013 or later, using a macro}
   spec.homepage      = ""
   spec.license       = "MIT"
 
