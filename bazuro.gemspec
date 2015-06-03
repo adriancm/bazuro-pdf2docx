@@ -6,11 +6,11 @@ require 'bazuro/version'
 Gem::Specification.new do |spec|
   spec.name          = "bazuro"
   spec.version       = Bazuro::VERSION
-  spec.authors       = ["Adrian Cepillo"]
+  spec.authors       = ["Adrian Cepillo", "Iñigo Ranedo"]
   spec.email         = ["adrian.cepillo@gmail.com"]
   spec.summary       = %q{Bazuro-PDF2DOCX allows convert from PDF to DOCX, through MS-WORD 2013 or later, using a macro}
   spec.description   = %q{Bazuro-PDF2DOCX allows convert from PDF to DOCX, through MS-WORD 2013 or later, using a macro}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/adriancm/bazuro-pdf2docx"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

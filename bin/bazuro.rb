@@ -2,11 +2,11 @@
 
 require 'rubygems'
 require 'sinatra'
-require 'app'
+#require 'app'
 require 'bazuro'
 
 use Rack::Auth::Basic, "Protected Area" do |username, password|
-  username == 'admin' && password == 'admin'
+  username == Bazuro.config["remote"]["username"] && password == Bazuro.config["remote"]["password"]
 end
 
 get '/' do
