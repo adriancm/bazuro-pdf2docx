@@ -1,9 +1,10 @@
 remote:
-  url: 'ip or domain'
-  username: 'your username'
-  password: 'your password'
-  filename: 'output filename'
+  url: 'ip_or_domain'
+  username: 'myuser'
+  password: 'mypassword'
+  filename: 'default_filename'
 local:
   winword_path: 'C:\Program Files\Microsoft Office\Office15\WINWORD.exe'
+  temp_path: 'C:\Users\Administrator\Temp'
 
 

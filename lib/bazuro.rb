@@ -1,8 +1,9 @@
 require "bazuro/version"
+require "yaml"
 
 module Bazuro
 
-  CONFIG = YAML.load_file("generators/bazuro_config.yml")
+  @config = YAML.load_file("lib/generators/bazuro_config.yml")
 
   class Pdf2docx
     def initialize(pdf)
@@ -23,7 +24,7 @@ module Bazuro
     end
 
     def convert(path)
-      system("cd path && #{CONFIG[:winword]} /mPDF2DOCX /q #{@pdf}", '')
+      system("cd #{path} && #{CONFIG[:winword]} /mPDF2DOCX /q #{@pdf}")
     end
   end
 end
