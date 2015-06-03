@@ -6,5 +6,7 @@ remote:
 local:
   winword_path: '"C:/Program Files (x86)/Microsoft Office/Office15/WINWORD.exe"'
   temp_path: 'C:/Users/acepillo/Temp'
-
+ssl:
+  key: "/dump/server.key"
+  crt: "/dump/server.crt"
 

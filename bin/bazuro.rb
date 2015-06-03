@@ -2,6 +2,7 @@
 
 require 'rubygems'
 require 'sinatra'
+require 'app'
 require 'bazuro'
 
 use Rack::Auth::Basic, "Protected Area" do |username, password|
