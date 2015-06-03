@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
-
 require 'sinatra'
+require 'app'
 require 'bazuro'
 
 get '/' do
@@ -14,7 +14,7 @@ post '/pdf2docx' do
     tempfile = params['file'][:tempfile]
     filename = params['file'][:filename]
     File.copy(tempfile.path, "./files/#{filename}")
-    send_file "./files/#{filename}", :filename => filename, :type => 'Application/octet-stream'
+    send_file "./files/#{filename}", :filename => filename
   else
     "Restricted Area!"
   end
