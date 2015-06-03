@@ -1,21 +1,28 @@
 #!/usr/bin/env ruby
 
+require 'rubygems'
 require 'sinatra'
 require 'bazuro'
+
+use Rack::Auth::Basic, "Protected Area" do |username, password|
+  username == 'admin' && password == 'admin'
+end
 
 get '/' do
   "It Works!"
 end
 
 post '/pdf2docx' do
-  user = params['username']
-  pass = params['password']
-  if Bazuro.config.remote.username == user && Bazuro.config.remote.password == pass
-    tempfile = params['file'][:tempfile]
-    filename = params['file'][:filename]
-    File.copy(tempfile.path, "./files/#{filename}")
-    send_file "./files/#{filename}", :filename => filename, :type => 'Application/octet-stream'
+  puts params.to_s
+  tempfile = params["file"][:tempfile]
+  filename = params["file"][:filename]
+  input = "#{Bazuro.config["local"]["temp_path"]}/#{filename}"
+  FileUtils.copy(tempfile.path, input)
+  pdf2doc = Bazuro::Pdf2docx.new(input)
+  if pdf2doc.convert()
+    send_file pdf2doc.docx, :filename => pdf2doc.docname
+    "Converted SUCCESS Mr. Bazuro!"
   else
-    "Restricted Area!"
+    "NO Mr. Bazuro, you don't deserve it!"
   end
 end

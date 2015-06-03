@@ -3,28 +3,32 @@ require "yaml"
 
 module Bazuro
 
-  @config = YAML.load_file("lib/generators/bazuro_config.yml")
+  def self.config
+    @config ||= YAML.load_file("lib/generators/bazuro_config.yml")
+  end
 
   class Pdf2docx
+
+    attr_accessor :pdf, :docx, :docname
+
     def initialize(pdf)
       @pdf = pdf
       @docx = nil
+      @docname = nil
     end
 
-    def send(pdf)
-
-    end
-
-    def respond_to(user)
+    def request(pdf)
 
     end
 
-    def test(docx)
+    def test
 
     end
 
-    def convert(path)
-      system("cd #{path} && #{CONFIG[:winword]} /mPDF2DOCX /q #{@pdf}")
+    def convert(path = Bazuro.config["local"]["temp_path"])
+      @docname = "#{@pdf.split('/').last.split('.').first}.docx"
+      @docx = "#{path}/#{@docname}"
+      system("cd #{path} && #{Bazuro.config["local"]["winword_path"]} /mPDF2DOC /q #{@pdf}")
     end
   end
 end
