@@ -19,14 +19,18 @@ module Bazuro
     end
 
     def request
-      response = RestClient::Request.new(
-          :method => :post,
-          :url => Bazuro.config["remote"]["url"],
-          :user => Bazuro.config["remote"]["username"],
-          :password => Bazuro.config["username"]["password"],
-          #:headers => { :accept => "",
-          #              :content_type => :json }
-      ).execute
+      RestClient::Request.new(
+                      :method => :post,
+                      :url => Bazuro.config["remote"]["url"],
+                      :user => Bazuro.config["remote"]["username"],
+                      :password => Bazuro.config["username"]["password"],
+                      :payload => {
+                          :multipart => true,
+                          :file => File.new(@pdf, 'rb')
+                      }
+                      #:headers => { :accept => "",
+                      #              :content_type => :json }
+                  ).execute
     end
 
     def test
