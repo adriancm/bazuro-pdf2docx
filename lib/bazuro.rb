@@ -1,6 +1,7 @@
 require "bazuro/version"
 require 'net/http'
 require "yaml"
+require "rest-client"
 
 module Bazuro
 
@@ -26,7 +27,7 @@ module Bazuro
                       :password => Bazuro.config["username"]["password"],
                       :payload => {
                           :multipart => true,
-                          :file => File.new(@pdf, 'rb')
+                          :file => @pdf
                       }
                       #:headers => { :accept => "",
                       #              :content_type => :json }
