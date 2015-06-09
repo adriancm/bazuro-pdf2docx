@@ -5,8 +5,10 @@ require "rest-client"
 
 module Bazuro
 
+  CONFIG = YAML.load_file("lib/generators/bazuro_config.yml") if File.exists?("lib/generators/bazuro_config.yml")
+
   def self.config
-    @config ||= YAML.load_file("lib/generators/bazuro_config.yml")
+    CONFIG
   end
 
   class Pdf2docx
@@ -21,17 +23,14 @@ module Bazuro
 
     def request
       RestClient::Request.new(
-                      :method => :post,
-                      :url => Bazuro.config["remote"]["url"],
-                      :user => Bazuro.config["remote"]["username"],
-                      :password => Bazuro.config["username"]["password"],
-                      :payload => {
-                          :multipart => true,
-                          :file => @pdf
-                      }
-                      #:headers => { :accept => "",
-                      #              :content_type => :json }
-                  ).execute
+          :method => :post,
+          :url => Bazuro.config["remote"]["url"],
+          :user => Bazuro.config["remote"]["username"],
+          :password => Bazuro.config["remote"]["password"],
+          :payload => {
+              :file => @pdf
+          }
+      ).execute
     end
 
     def test

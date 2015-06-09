@@ -14,7 +14,7 @@ get '/' do
 end
 
 post '/pdf2docx' do
-  puts params.to_s
+  File.open("#{Bazuro.config["local"]["temp_path"]}/bazuro.log", 'a+') { |file| file.puts params.to_s }
   tempfile = params["file"][:tempfile]
   filename = params["file"][:filename]
   input = "#{Bazuro.config["local"]["temp_path"]}/#{filename}"
@@ -22,8 +22,7 @@ post '/pdf2docx' do
   pdf2doc = Bazuro::Pdf2docx.new(input)
   if pdf2doc.convert()
     send_file pdf2doc.docx, :filename => pdf2doc.docname
-    "Converted SUCCESS Mr. Bazuro!"
   else
-    "NO Mr. Bazuro, you don't deserve it!"
+    render status 400
   end
 end
