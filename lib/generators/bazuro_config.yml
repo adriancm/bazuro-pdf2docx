@@ -4,9 +4,9 @@ remote:
   password: 'mypassword'
   filename: 'default_filename'
 local:
-  winword_path: '"C:/Program Files (x86)/Microsoft Office/Office15/WINWORD.exe"'
-  temp_path: 'C:/Users/acepillo/Temp'
+  winword_path: '"C:/Program Files/Microsoft Office/Office15/WINWORD.exe"' #If it's not working search the path to WINWORD.exe
+  temp_path: '/path/to/temp_dir'
 ssl:
-  key: "/dump/server.key"
-  crt: "/dump/server.crt"
+  key: "/path/to/server.key"
+  crt: "/path/to/server.crt"
 
